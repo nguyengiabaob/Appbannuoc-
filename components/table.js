@@ -102,7 +102,7 @@ export default function Table_({navigation,route}) {
             
           </ScrollView>
           <View style={{height:80,alignItems:'center',marginBottom:10,borderColor:"#D3D3D3", borderWidth:3, justifyContent:'center'}}>
-          <TouchableOpacity style={{alignItems:'flex-start',backgroundColor:"#3399FF",width:150,borderRadius:80,flexDirection:"row"}}onPress={()=>{navigation.navigate('cart_',{id:id})
+          <TouchableOpacity style={{alignItems:'flex-start',backgroundColor:"#3399FF",width:150,borderRadius:80,flexDirection:"row"}}onPress={()=>{navigation.navigate('Giỏ hàng',{id:id})
          
        }}>
               <AntDesign name="shoppingcart" size={50} color="#dad7d7e8"></AntDesign>

@@ -112,7 +112,7 @@ export default function Dangnhap({navigation}) {
           </View> 
           <View style={styles.sectionStyle}> 
           <Foundation name="key" size={25} style={{marginLeft:5}} ></Foundation> 
-          <TextInput placeholder="Mật Khẩu" style={{flex:1,width:500,marginLeft:10}} underlineColorAndroid="transparent" onChangeText={(text)=>{setpassword(text)}} ></TextInput> 
+          <TextInput placeholder="Mật Khẩu" style={{flex:1,width:500,marginLeft:10}} underlineColorAndroid="transparent" onChangeText={(text)=>{setpassword(text)}} secureTextEntry={true} ></TextInput> 
         </View>
        
        

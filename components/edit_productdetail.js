@@ -4,6 +4,8 @@ import {MaterialIcons} from 'react-native-vector-icons'
 import { View,Dimensions,Text,TouchableOpacity,TextInput,Image } from 'react-native'
 import { launchImageLibrary } from 'react-native-image-picker'
 import firestore from '@react-native-firebase/firestore'
+import { Dialog, Portal, Title,Paragraph, Provider } from 'react-native-paper';
+import { Button} from 'react-native-paper';
 import { set } from 'react-native-reanimated'
 const windows=Dimensions.get('window')
 
@@ -14,6 +16,10 @@ const [listspp,setlistspp]= React.useState([])
 const [tensanpham, settensanpham]= React.useState("")
 const [gia, setgia]= React.useState("")
 const [soluong, setsoluong]= React.useState("")
+const [visible, setVisible] = React.useState(false);
+const showDialog = () => setVisible(true);
+
+const hideDialog = () => setVisible(false);
 const image_start=require('../images/download.png')
 const [photo,setphoto]= React.useState(image_start)
 
@@ -62,7 +68,7 @@ const [photo,setphoto]= React.useState(image_start)
     // {
     async function capnhat()
     {
-        
+        let i=0
     //     if(photo!=image_start&&(tensanpham!=""&&gia!=""&&soluong!=""))
     //     {
     //      console.log(tensanpham)
@@ -82,6 +88,7 @@ const [photo,setphoto]= React.useState(image_start)
         .update({
         image:photo
         }) 
+        i=1
      }
      if(tensanpham!="")
      {
@@ -91,6 +98,7 @@ const [photo,setphoto]= React.useState(image_start)
         name_water:tensanpham
 
         }) 
+        i=1
      }
      if(gia!="")
      {
@@ -99,6 +107,7 @@ const [photo,setphoto]= React.useState(image_start)
         .update({
         price_water:gia
         }) 
+        i=1
      }
      if(soluong!="")
      {
@@ -107,6 +116,11 @@ const [photo,setphoto]= React.useState(image_start)
         .update({
         number :soluong
         }) 
+        i=1
+     }
+     if(i===1)
+     {
+       showDialog()
      }
     //  else if(tensanpham!=""||gia!=""||soluong!=""||photo==image_start)
     //  {
@@ -150,7 +164,7 @@ const [photo,setphoto]= React.useState(image_start)
           <View style={{marginTop:30}} >
                 <Text style={{fontSize:15, fontWeight:'bold',fontStyle:'italic'}}>Giá </Text>
                 
-                <TextInput  onChangeText={(text)=>{setgia(text)}} style={{marginTop:5,width:150,borderRadius:10,height:50,borderColor:"#D3D3D3",borderWidth:3}} >{giasp}</TextInput>
+                <TextInput keyboardType="numeric"  onChangeText={(text)=>{setgia(text)}} style={{marginTop:5,width:150,borderRadius:10,height:50,borderColor:"#D3D3D3",borderWidth:3}} >{giasp}</TextInput>
           </View>
           <View  style={{marginTop:30}}>
                 <Text style={{fontSize:15, fontWeight:'bold',fontStyle:'italic'}}>Số Lượng </Text>
@@ -175,6 +189,19 @@ const [photo,setphoto]= React.useState(image_start)
             </TouchableOpacity>
         
             </View>
+            <Provider >
+                          <Portal >
+                           <Dialog  visible={visible} onDismiss={hideDialog} style={{borderRadius:25, marginBottom:30}}>
+                          <Dialog.Title style={{ justifyContent:'center',alignSelf:'center'}} >Chúc mừng</Dialog.Title>
+                           <Dialog.Content style={{backgroundColor:"#FFF",justifyContent:"center",alignItems:'center'}}>
+                              <Paragraph style={{fontSize:15}}>Bạn cập nhật thông tin thành công</Paragraph>
+                          </Dialog.Content>
+                          <Dialog.Actions style={{alignItems:"center",justifyContent:"center"}}>
+                          <Button onPress={hideDialog}><Text style={{color:"#3399FF"}}>Thoát</Text></Button>
+                          </Dialog.Actions>
+                          </Dialog>
+                          </Portal>
+                          </Provider>
         </View>
     )
 }

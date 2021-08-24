@@ -23,7 +23,7 @@ export default function Router_home() {
         <stack.Screen  name='Danh sách sản phẩm' component={Table_}>
        
         </stack.Screen>
-        <stack.Screen  options={{headerShown:false}} name="cart_" component={Cart}/>
+        <stack.Screen name="Giỏ hàng" component={Cart}/>
         <stack.Screen name="Thông tin người đặt" component={Address}/>
         <stack.Screen name="product" component={Product}/>
      

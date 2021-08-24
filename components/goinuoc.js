@@ -98,6 +98,18 @@ export default function Address({navigation,route}) {
       setstt(st)
     })
   },[])
+function kiemtra()
+{
+  if(tennguoidathang===""||diachi===""||sodienthoai==="")
+  {
+    alert("Hãy điền đầy đủ thông tin")
+    return false
+  }
+  else
+  {
+    return true
+  }
+}
 async function capnhat()
 { 
   await 
@@ -205,7 +217,10 @@ async function capnhat1()
           </View> */}
           </View>
           <View style={{alignItems:'center',marginTop:5,borderColor:"#D3D3D3",borderWidth:3,height:70,justifyContent:'center', backgroundColor:"#FFF"}}>
-          <TouchableOpacity style={{alignItems:'center',backgroundColor:"#ff1414e8",width:150,borderRadius:80,flexDirection:"row", justifyContent:'center'}}onPress={()=>{showDialog()}}>
+          <TouchableOpacity style={{alignItems:'center',backgroundColor:"#ff1414e8",width:150,borderRadius:80,flexDirection:"row", justifyContent:'center'}}onPress={()=>{
+            if(kiemtra()===true)
+            {
+            showDialog()}}}>
               
               <Text style={{color:'#FFF',alignSelf:'center', fontSize:15,fontWeight:'bold',padding:5}}>Xác nhận</Text>
             </TouchableOpacity>

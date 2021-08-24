@@ -79,7 +79,7 @@ async function deleted( id)
 
                     </Image>  
                     <View style={{marginLeft:3,marginTop:5}}> 
-                      <Text style={{marginTop:5,marginBottom:20, fontSize:18,color:"#0c0c0ce8",fontWeight:'bold',width:160}}>{item.name_water}</Text>
+                      <Text style={{marginTop:10,marginBottom:15, fontSize:18,color:"#0c0c0ce8",fontWeight:'bold',width:160}}>{item.name_water}</Text>
                       <Text style={{marginBottom:10,fontSize:13 ,color:"#585858",fontStyle:'italic',fontWeight:'bold'}}> Số lượng :{item.number }</Text>
                       <Text style={{fontSize:18,color:"#00AA00",fontStyle:'italic',fontWeight:'bold'}}> Giá :{item.price_water} Đ</Text>
                     </View>

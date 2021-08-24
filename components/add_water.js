@@ -2,6 +2,8 @@ import React from 'react'
 import {MaterialIcons} from 'react-native-vector-icons'
 import firestore from '@react-native-firebase/firestore'
 import { View,Dimensions,Text,TouchableOpacity,TextInput,Image, ImageBackground } from 'react-native'
+import { Dialog, Portal, Title,Paragraph, Provider } from 'react-native-paper';
+import { Button} from 'react-native-paper';
 import { launchImageLibrary } from 'react-native-image-picker'
 const windows=Dimensions.get('window')
 
@@ -12,6 +14,10 @@ const image_start=require('../images/download.png')
 const [photo,setphoto]= React.useState(image_start)
 const [tensanpham, settensanpham]= React.useState("")
 const [gia, setgia]= React.useState(0)
+const [visible, setVisible] = React.useState(false);
+const showDialog = () => setVisible(true);
+
+const hideDialog = () => setVisible(false);
 const [listspp,setlistspp]= React.useState([])
 const [soluong, setsoluong]= React.useState(0)  
 React.useEffect(()=>{
@@ -45,7 +51,7 @@ async function them()
             number: Number.parseInt(soluong),
             image:photo
         }
-    )
+    ).then(showDialog())
 }
 const Handelchoosephoto=()=>{
         const option ={
@@ -71,7 +77,7 @@ const Handelchoosephoto=()=>{
           <View style={{marginTop:30}} >
                 <Text style={{fontSize:15, fontWeight:'bold',fontStyle:'italic',color :"#FFF"}}>Giá </Text>
                 
-                <TextInput onChangeText={(text)=>{setgia(text)}} style={{backgroundColor:"#FFF",marginTop:5,width:150,borderRadius:10,height:50,borderColor:"#D3D3D3",borderWidth:3}} ></TextInput>
+                <TextInput keyboardType='numeric' onChangeText={(text)=>{setgia(text)}} style={{backgroundColor:"#FFF",marginTop:5,width:150,borderRadius:10,height:50,borderColor:"#D3D3D3",borderWidth:3}} ></TextInput>
           </View>
           <View  style={{marginTop:30}}>
                 <Text style={{color:"#FFF",fontSize:15, fontWeight:'bold',fontStyle:'italic'}}>Số Lượng </Text>
@@ -95,6 +101,19 @@ const Handelchoosephoto=()=>{
         
             </View>
          </ImageBackground>
+         <Provider >
+                          <Portal >
+                           <Dialog  visible={visible} onDismiss={hideDialog} style={{borderRadius:25, marginBottom:30}}>
+                          <Dialog.Title style={{ justifyContent:'center',alignSelf:'center'}} >Chúc mừng</Dialog.Title>
+                           <Dialog.Content style={{backgroundColor:"#FFF",justifyContent:"center",alignItems:'center'}}>
+                              <Paragraph style={{fontSize:15}}>Bạn đã thêm một sản phẩm</Paragraph>
+                          </Dialog.Content>
+                          <Dialog.Actions style={{alignItems:"center",justifyContent:"center"}}>
+                          <Button onPress={hideDialog}><Text style={{color:"#3399FF"}}>Thoát</Text></Button>
+                          </Dialog.Actions>
+                          </Dialog>
+                          </Portal>
+                          </Provider>
         </View>
     )
 }

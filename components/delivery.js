@@ -182,7 +182,7 @@ async function capnhatgiaohang()
                      <Image style={{width:75,height:75}} source={item.image}>
 
                     </Image>  
-                    <View style={{marginLeft:5, width:157}}> 
+                    <View style={{marginLeft:5, width:160}}> 
                       <Text style={{marginBottom:12, fontSize:18,color:"#0c0c0ce8",fontWeight:'bold'}}>{item.name_water}</Text>
                       <Text style={{marginBottom:10,fontSize:13 ,color:"#00AA00",fontStyle:'italic',fontWeight:'bold'}}> Số lượng :{item.number }</Text>
                       <Text style={{fontSize:18,color:"#00AA00",fontStyle:'italic',fontWeight:'bold'}}> Giá :{item.price_water}</Text>

@@ -98,7 +98,7 @@ export default function Cart({navigation,route}) {
             </Image>
         </View>
         <View>
-        <ScrollView style={{height:480}}>
+        <ScrollView style={{height:440}}>
               {listspp.map(item=>(
               <View key={item.id} style={{borderColor:"#D3D3D3",borderWidth:3,justifyContent:'center'}}>
                
